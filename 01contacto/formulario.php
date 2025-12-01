@@ -18,7 +18,7 @@
         }
         input[type="submit"] {
             width: 100px;
-            margin: 0 auto;
+            margin: 0 auto;v
             display: block;
             background: #333;
             color: #fff;
@@ -55,6 +55,7 @@
             <p>Ha ocurrido un error al enviar el email.</p>
         <?php endif; ?>
     </div>
+
 <?php endif; ?>
 
 
