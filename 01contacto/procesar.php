@@ -19,8 +19,8 @@ header('Location: formulario.php?error=2');
 exit();
 }
 
-
-$email = new EmailService(new MailtrapProvider());
+$PrveedorMailtrap = new MailtrapProvider();
+$email = new EmailService($PrveedorMailtrap);
 $sentEmail = $email->sendEmail(
    to: $_POST['email'],
     subject: 'Gracias por contactarnos',

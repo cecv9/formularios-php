@@ -7,14 +7,20 @@
  * de proveedores de email (por ejemplo, Mailtrap, SendGrid, etc.).
  */
 
-final  class  EmailService
-{
-    public function __construct(private  readonly  EmailProviderInterface  $emailProvider)
-    {}
+final class EmailService {
 
-    public function sendEmail(string $to, string  $subject, string  $body): bool
-    {
-         return  $this->emailProvider->sendEmail($to, $subject, $body);
+    private EmailProviderInterface $emailProvider;
+
+
+    public function __construct( EmailProviderInterface $emailProvider){
+
+        $this->emailProvider=$emailProvider;
+
+    }
+
+    function sendEmail(string $to, string $subject, string $body):bool{
+        return $this->emailProvider->sendEmail($to, $subject, $body);
+
     }
 
 }
