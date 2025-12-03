@@ -17,25 +17,25 @@ require  'vendor/autoload.php';
 final class MailtrapProvider implements EmailProviderInterface
 {
 
-    public function sendEmail(string $to, string $subject, string $body): bool
-    {
+    public function sendEmail(string $to, string $subject, string $body): bool{
+
         $mail = new PHPMailer(true);
 
             // Configuración del servidor
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;
         $mail->isSMTP();
-        $mail->Host = '';
+        $mail->Host = 'sandbox.smtp.mailtrap.io';
         $mail->SMTPAuth = true;
-        $mail->Username = '';
-        $mail->Password = '';
+        $mail->Username = '4f94b1b5c44922';
+        $mail->Password = 'e181fe113e7aa3';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
         try {
             // Configura y envía el mensaje
             $mail->setFrom('your@email.com', 'Your Name');
-            $mail->addAddress('recipient@example.com', 'Recipient Name');
+            $mail->addAddress($to);
             $mail->Subject = 'Asunto del correo';
-            $mail->Body = 'Cuerpo del mensaje';
+            $mail->Body = $body;
             $mail->send();
             return true;
         } catch (Exception $e) {
@@ -48,11 +48,6 @@ final class MailtrapProvider implements EmailProviderInterface
 
 // Looking to send emails in production? Check out our Email API/SMTP product!
 /*
-$phpmailer = new PHPMailer();
-$phpmailer->isSMTP();
-$phpmailer->Host = 'sandbox.smtp.mailtrap.io';
-$phpmailer->SMTPAuth = true;
-$phpmailer->Port = 2525;
-$phpmailer->Username = '3b73d5280da28d';
-$phpmailer->Password = 'cdba051001e024';
+// Looking to send emails in production? Check out our Email API/SMTP product!
+
 */

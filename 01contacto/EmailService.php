@@ -7,6 +7,7 @@
  * de proveedores de email (por ejemplo, Mailtrap, SendGrid, etc.).
  */
 
+
 final class EmailService {
 
     private EmailProviderInterface $emailProvider;
@@ -19,6 +20,7 @@ final class EmailService {
     }
 
     function sendEmail(string $to, string $subject, string $body):bool{
+
         return $this->emailProvider->sendEmail($to, $subject, $body);
 
     }
