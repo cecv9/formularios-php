@@ -26,8 +26,8 @@ final class MailtrapProvider implements EmailProviderInterface
         $mail->isSMTP();
         $mail->Host = 'sandbox.smtp.mailtrap.io';
         $mail->SMTPAuth = true;
-        $mail->Username = '4f94b1b5c44922';
-        $mail->Password = 'e181fe113e7aa3';
+        $mail->Username = '';
+        $mail->Password = '';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
         try {
