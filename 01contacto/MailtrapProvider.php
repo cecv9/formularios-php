@@ -48,6 +48,5 @@ final class MailtrapProvider implements EmailProviderInterface
 
 // Looking to send emails in production? Check out our Email API/SMTP product!
 /*
-// Looking to send emails in production? Check out our Email API/SMTP product!
 
 */

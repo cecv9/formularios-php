@@ -1,5 +1,8 @@
 <?php
 
+
+require __DIR__.'/classes.php';
+
 if(empty($_POST['nombre']) || empty($_POST['precio']) || empty($_POST['descripcion'])){
 
     header('Location:formulario.php?error=1');
@@ -25,3 +28,21 @@ $imagen=$_FILES['imagen']['name'];
 $imagen=uniqid().'-'.$imagen;
 move_uploaded_file($_FILES['imagen']['tmp_name'],__DIR__.'/productos/'.$imagen);
 
+$createProductService= new CreateProductService( new CreateProductPDO() );
+
+$productCreated= $createProductService->create(
+    new Product(
+    $_POST['nombre'],
+    $_POST['precio'],
+    $_POST['descripcion'],
+    $imagen
+)
+);
+
+if($productCreated){
+    unlink(__DIR__.'/productos/'.$imagen);
+    header('formulario.php?error=5');
+    exit;
+}
+
+header('Location:formulario.php?success=1');
